@@ -15,6 +15,7 @@ services:
     - mysql
     volumes:
       - .:/var/www/html
+      - ./docker/supervisor/laravel-worker.conf:/etc/supervisor/conf.d/laravel-worker.conf
   mysql:
     image: mysql:5.7
     environment:
@@ -26,5 +27,9 @@ services:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+  redis:
+    image: redis:5.0
+    ports:
+      - "6379:6379"
 volumes:
   mysql-data:

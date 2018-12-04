@@ -11,6 +11,7 @@ vim
 
 RUN apt-get update \
     && apt-get install -y libpq-dev \
-    && docker-php-ext-install pdo_mysql pdo_pgsql
+    && docker-php-ext-install pdo_mysql pdo_pgsql \
+    && apt-get install -y supervisor
 
 WORKDIR /var/www/html

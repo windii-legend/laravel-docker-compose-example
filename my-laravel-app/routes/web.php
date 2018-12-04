@@ -11,6 +11,11 @@
 |
 */
 
+use App\Jobs\TestJob;
+
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    $test = (new TestJob)->delay(10);
+    dispatch($test);
+    return 'テストJobをQueueに追加しました！';
 });
